@@ -78,7 +78,7 @@ const App = () => {
   };
 
   return (
-    <Container>
+  <Container>
       <View style={{ padding: '10%' }}>
         <Text style={{ color: 'white', fontSize: 30, textAlign: 'center' }}>Flip Card</Text>
       </View>
@@ -91,52 +91,48 @@ const App = () => {
           flipVertical={false}
           flip={!isFlipped}
           onFlipEnd={(isFlipEnd) => {
-            
-
-          }}
-          onFlipStart={(isFlipStart) => { console.log('isFlipStart', isFlipStart) }}
+          } }
+          onFlipStart={(isFlipStart) => { console.log('isFlipStart', isFlipStart); } }
         >
           {/* Front Side */}
-          <View style={[styles.card, {backgroundColor:isAnswerCorrect ? '#508D69' :"red"}]}>
-            <TouchableOpacity style={{position:'absolute' ,top:5,right:5}} onPress={async()=>{
-              setFavorities(!favorities)
+          <View style={[styles.card, { backgroundColor: isAnswerCorrect ? '#508D69' : "red" }]}>
+            <TouchableOpacity style={{ position: 'absolute', top: 5, right: 5 }} onPress={async () => {
+              setFavorities(!favorities);}}
+              >
+                  <Ionicons name="heart" size={20} color={!favorities ? "white" : "pink"} />
 
-              <Ionicons name="heart" size={20} color={!favorities ? "white":"pink"}  />
-            </TouchableOpacity>
-            <View style={{ flex: 7, justifyContent: 'center' }}>
-              <Text style={styles.cardText}>{cevap}</Text>
-            </View>
-            <View style={{ flex: 1, marginBottom: '5%' }}>
-              <Button size="lg" title="Yeni Soru" style={{ width: '100%', flex: 1,backgroundColor:isAnswerCorrect ? '#508D69' :"red"}} onPress={()=>{
-                setIsFlipped(false);
-                setCevap(currentSeries.en);
-                setDisabled(false);
-                setUserInput('');
-                setCurrentSeries(data[index]);
-              }} />
-            </View>
+          </TouchableOpacity>
+          <View style={{ flex: 7, justifyContent: 'center' }}>
+            <Text style={styles.cardText}>{cevap}</Text>
           </View>
-          {/* Back Side */}
-          <View style={[styles.card, styles.cardFront]}>
-            <Text style={styles.cardText}>{currentSeries.en}</Text>
+          <View style={{ flex: 1, marginBottom: '5%' }}>
+            <Button size="lg" title="Yeni Soru" style={{ width: '100%', flex: 1, backgroundColor: isAnswerCorrect ? '#508D69' : "red" }} onPress={() => {
+              setIsFlipped(false);
+              setCevap(currentSeries.en);
+              setDisabled(false);
+              setUserInput('');
+              setCurrentSeries(data[index]);
+            } } />
           </View>
-        </FlipCard>
-      </TouchableOpacity>
-      <View style={{ flex: 0.2, marginHorizontal: '21%', marginTop: '10%', flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: '#7E8087' }}>
+        </View>
+        {/* Back Side */}
+        <View style={[styles.card, styles.cardFront]}>
+          <Text style={styles.cardText}>{currentSeries.en}</Text>
+        </View>
+      </FlipCard>
+    </TouchableOpacity><View style={{ flex: 0.2, marginHorizontal: '21%', marginTop: '10%', flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: '#7E8087' }}>
         <TextInput
           placeholderTextColor={"#7E8087"}
           placeholder="CEVAP..."
           style={styles.textinput}
           onChangeText={(text) => setUserInput(text)}
-          value={userInput}
-        />
+          value={userInput} />
         <TouchableOpacity style={{ paddingRight: '2%' }} onPress={handleChange} disabled={disabled}>
           <Ionicons name="send" size={15} color={"white"} />
         </TouchableOpacity>
-      </View>
-      <View style={{ flex: 1 }}></View>
-      <View style={{ flex: 0.4 }}></View>
+      </View><View style={{ flex: 1 }}></View><View style={{ flex: 0.4 }}></View>
     </Container>
+
   );
 };
 
